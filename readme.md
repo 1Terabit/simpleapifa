@@ -3,6 +3,7 @@
 Este es un proyecto de ejemplo que utiliza FastAPI para crear una API RESTful. La aplicación está estructurada de manera modular, lo que facilita su mantenimiento y escalabilidad.
 
 ## Estructura del Proyecto
+(```)
 simpleapifa/
 ├── app/
 │   ├── __init__.py
@@ -39,6 +40,7 @@ simpleapifa/
 ├── requirements.txt           # Dependencias del proyecto
 ├── .env
 └── README.md                  # Documentación del proyecto
+(```)
 
 ## Instalación
 
