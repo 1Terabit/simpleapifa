@@ -25,7 +25,7 @@ def update_user(db: Session, user_id: int, user: UserCreate):
     if db_user:
         db_user.username = user.username
         db_user.email = user.email
-        db_user.password = user.password  # Asegúrate de manejar la contraseña de forma segura
+        db_user.password = user.password  #NOTE Asegúrate de manejar la contraseña de forma segura
         db.commit()
         db.refresh(db_user)
         return db_user
