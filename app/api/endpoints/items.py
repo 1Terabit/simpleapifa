@@ -1,9 +1,10 @@
 from app.models.item import Item
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from ..dependencies import get_db
 from ...schemas.item import ItemCreate, ItemResponse
 from ...services.item_service import create_item, get_items, delete_item, update_item
+from app.exceptions import NotFoundException
 
 router = APIRouter()
 
@@ -39,7 +40,7 @@ def delete_item_endpoint(item_id: int, db: Session = Depends(get_db)):
     """
     item = delete_item(db=db, item_id=item_id)
     if item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
+        raise NotFoundException(detail="Item not found")
     return item
 
 @router.put("/{item_id}", response_model=ItemResponse, summary="Actualizar un ítem", 
@@ -54,12 +55,17 @@ def update_item_endpoint(item_id: int, item: ItemCreate, db: Session = Depends(g
     """
     updated_item = update_item(db=db, item_id=item_id, item=item)
     if updated_item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
+        raise NotFoundException(detail="Item not found")
     return updated_item 
 
 @router.get("/{item_id}", response_model=ItemResponse, summary="Obtener un ítem por ID")
 def read_item(item_id: int, db: Session = Depends(get_db)):
+    """
+    Obtiene un ítem por su ID.
+
+    - **item_id**: ID del ítem a obtener.
+    """
     item = db.query(Item).filter(Item.id == item_id).first()
     if item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
+        raise NotFoundException(detail="Item not found")
     return item 

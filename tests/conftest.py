@@ -14,7 +14,7 @@ def test_client():
 def setup_database():
     db = SessionLocal()
     
-    # Limpiar la base de datos antes de cada prueba
+    #NOTE: Limpiar la base de datos antes de cada prueba
     # db.query(Comment).delete()
     # db.query(Item).delete()
     # db.query(User).delete()

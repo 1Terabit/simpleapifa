@@ -2,6 +2,9 @@ from sqlalchemy.orm import Session
 from ..models.comment import Comment
 from ..schemas.comment import CommentCreate
 
+def get_comments(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(Comment).offset(skip).limit(limit).all()
+
 def create_comment(db: Session, comment: CommentCreate):
     db_comment = Comment(**comment.dict())
     db.add(db_comment)
@@ -10,7 +13,7 @@ def create_comment(db: Session, comment: CommentCreate):
     return db_comment
 
 def get_comment_by_id(db: Session, comment_id: int):
-    return db.query(Comment).filter(Comment.id == comment_id).first()  #NOTE Busca el comentario por ID 
+    return db.query(Comment).filter(Comment.id == comment_id).first()
 
 def delete_comment(db: Session, comment_id: int):
     comment = db.query(Comment).filter(Comment.id == comment_id).first()
