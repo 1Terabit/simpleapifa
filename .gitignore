@@ -3,6 +3,7 @@
 
 # Ignorar archivos de bytecode de Python
 __pycache__/
+__pycache__.
 *.py[cod]
 
 # Ignorar otros archivos temporales
