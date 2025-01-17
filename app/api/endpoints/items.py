@@ -1,3 +1,4 @@
+from app.models.item import Item
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from ..dependencies import get_db
@@ -55,3 +56,10 @@ def update_item_endpoint(item_id: int, item: ItemCreate, db: Session = Depends(g
     if updated_item is None:
         raise HTTPException(status_code=404, detail="Item not found")
     return updated_item 
+
+@router.get("/{item_id}", response_model=ItemResponse, summary="Obtener un ítem por ID")
+def read_item(item_id: int, db: Session = Depends(get_db)):
+    item = db.query(Item).filter(Item.id == item_id).first()
+    if item is None:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return item 

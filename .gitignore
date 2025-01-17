@@ -1,0 +1,14 @@
+# Ignorar archivos de entorno
+.env
+
+# Ignorar archivos de bytecode de Python
+__pycache__/
+*.py[cod]
+
+# Ignorar otros archivos temporales
+*.log
+*.sqlite3
+*.db
+*.egg-info/
+*.egg
+*.venv/
