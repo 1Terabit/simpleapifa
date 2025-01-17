@@ -10,7 +10,7 @@ def create_comment(db: Session, comment: CommentCreate):
     return db_comment
 
 def get_comment_by_id(db: Session, comment_id: int):
-    return db.query(Comment).filter(Comment.id == comment_id).first()  # Busca el comentario por ID 
+    return db.query(Comment).filter(Comment.id == comment_id).first()  #NOTE Busca el comentario por ID 
 
 def delete_comment(db: Session, comment_id: int):
     comment = db.query(Comment).filter(Comment.id == comment_id).first()

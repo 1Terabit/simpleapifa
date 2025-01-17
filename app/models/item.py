@@ -10,4 +10,4 @@ class Item(Base):
     name = Column(String, index=True)
     description = Column(Text)
 
-    comments = relationship("Comment", back_populates="item")  # Relación inversa 
+    comments = relationship("Comment", back_populates="item")  #NOTE: Relación inversa 

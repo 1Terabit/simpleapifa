@@ -12,4 +12,4 @@ class CommentResponse(CommentBase):
     id: int
 
     class Config:
-        from_attributes = True  # Cambiar 'orm_mode' a 'from_attributes' si usas Pydantic V2 
+        from_attributes = True  #NOTE Cambiar 'orm_mode' a 'from_attributes' si usas Pydantic V2 
