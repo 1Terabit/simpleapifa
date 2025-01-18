@@ -56,7 +56,7 @@ def update_user_endpoint(user_id: int, user: UserCreate, db: Session = Depends(g
         raise NotFoundException(detail="User not found")
     return updated_user
 
-@router.delete("/{user_id}", response_model=UserResponse, summary="Eliminar un usuario")
+@router.delete("/{user_id}", response_model=UserResponse, summary="Delete User")
 def delete_user_endpoint(user_id: int, db: Session = Depends(get_db)):
     """
     Elimina un usuario por su ID.
